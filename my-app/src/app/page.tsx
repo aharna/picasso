@@ -7,10 +7,9 @@ export default function Home() {
   const [apiResponse, setApiResponse] = useState("");
 
   const generateImage = async () => {
-    // Make sure we have a prompt to work with
+  
     if (!thePrompt) return;
   
-    // Start the loading indicator
     setIsLoading(true);
   
     try {
@@ -22,12 +21,9 @@ export default function Home() {
       if (response.ok) {
         console.log("Image generated successfully");
   
-        // Grab the response from the backend as a blob (binary object)
-        // and convert it to an image object URL
         const blob = await response.blob();
         const imageUrl = URL.createObjectURL(blob);
-  
-        // Set the image URL state variable
+
         setApiResponse(imageUrl);
       } else {
         console.error("Failed to generate image");
@@ -41,7 +37,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen bg-gray-900 flex-col items-center justify-between px-24 py-12">
-      <h1 className=" text-5xl mb-4">Imagenerator</h1>
+      <h1 className=" text-5xl mb-4">Picasso</h1>
       <div className="mb-4">
         This is a project that uses Stable Diffusion to generate images from text
         prompts
